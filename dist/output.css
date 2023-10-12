@@ -1208,6 +1208,77 @@ button:disabled {
  * Navigation
  */
 
+.navigation {
+  visibility: hidden;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  z-index: 6;
+  width: 0px;
+  --navigation-drawer-width: 320px;
+  background-color: var(--surface);
+  max-width: var(--navigation-drawer-width);
+  transition: var(--motion-duration-medium-1)
+    var(--motion-easing-emphasized-accelerate);
+  transition-property: width, visibility;
+  border-radius: var(--radius-large-end);
+}
+
+.navigation.show {
+  visibility: visible;
+  width: var(--navigation-drawer-width);
+  transition: var(--motion-duration-long)
+    var(--motion-easing-emphasized-decelerate);
+}
+
+.navigation-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-block: 8px 12px;
+}
+
+.navigation-header,
+.drawer-list {
+  opacity: 0;
+  padding-inline: 12px;
+  transition: var(--motion-duration-medium-1) var(--motion-easing-emphasized);
+}
+
+.navigation.show :where(.navigation-header, .drawer-list) {
+  opacity: 1;
+  transition: var(--motion-duration-long)
+    var(--motion-easing-emphasized-decelerate);
+}
+
+.navigation.show .navigation-header {
+  transition: var(--motion-duration-short-2)
+    var(--motion-easing-emphasized-accelerate);
+}
+
+.drawer-link {
+  display: flex;
+  height: 56px;
+  width: 100%;
+  align-items: center;
+  gap: 12px;
+  text-transform: capitalize;
+  --state-layer-bg: var(--on-surface);
+  padding-inline: 16px 24px;
+  border-radius: var(--radius-full);
+}
+
+.drawer-link.active {
+  background-color: var(--secondary-container);
+  color: var(--on-secondary-container);
+  --state-layer-bg: var(--on-secondary-container);
+}
+
+.drawer-link.active .leading-icon {
+  font-variation-settings: "FILL" 1;
+}
+
 /**
  * Button
  */
@@ -1264,6 +1335,22 @@ button:disabled {
 /*-----------------------------------*\
   #SCRIM
 \*-----------------------------------*/
+
+.scrim {
+  visibility: hidden;
+  position: fixed;
+  z-index: 5;
+  opacity: 0;
+  inset: 0;
+  background-color: var(--scrim);
+  transition: var(--motion-duration-short-2) var(--motion-easing-linear);
+  transition-property: visibility, opacity;
+}
+
+.scrim.active {
+  visibility: visible;
+  opacity: 0.5;
+}
 
 /*-----------------------------------*\
   #MAIN

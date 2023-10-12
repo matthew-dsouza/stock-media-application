@@ -602,11 +602,66 @@ button:disabled {
   color: var(--on-surface-variant);
 }
 
-
-
 /**
  * Navigation
  */
+.navigation {
+  @apply fixed top-0 left-0 bottom-0 w-0 z-[6] invisible;
+  --navigation-drawer-width: 320px;
+  background-color: var(--surface);
+  max-width: var(--navigation-drawer-width);
+  transition: var(--motion-duration-medium-1)
+    var(--motion-easing-emphasized-accelerate);
+  transition-property: width, visibility;
+  border-radius: var(--radius-large-end);
+}
+
+.navigation.show {
+  @apply visible;
+  width: var(--navigation-drawer-width);
+  transition: var(--motion-duration-long)
+    var(--motion-easing-emphasized-decelerate);
+}
+
+.navigation-header {
+  @apply flex items-center gap-[16px];
+  padding-block: 8px 12px;
+}
+
+.navigation-header,
+.drawer-list {
+  @apply opacity-0;
+  padding-inline: 12px;
+  transition: var(--motion-duration-medium-1) var(--motion-easing-emphasized);
+}
+
+.navigation.show :where(.navigation-header, .drawer-list) {
+  @apply opacity-100;
+  transition: var(--motion-duration-long)
+    var(--motion-easing-emphasized-decelerate);
+}
+
+.navigation.show .navigation-header {
+  transition: var(--motion-duration-short-2)
+    var(--motion-easing-emphasized-accelerate);
+}
+
+.drawer-link {
+  @apply flex items-center gap-[12px] w-full h-[56px] capitalize;
+  --state-layer-bg: var(--on-surface);
+  padding-inline: 16px 24px;
+  border-radius: var(--radius-full);
+}
+
+.drawer-link.active {
+  background-color: var(--secondary-container);
+  color: var(--on-secondary-container);
+  --state-layer-bg: var(--on-secondary-container);
+}
+
+.drawer-link.active .leading-icon {
+  font-variation-settings: "FILL" 1;
+}
 
 /**
  * Button
@@ -656,6 +711,17 @@ button:disabled {
 /*-----------------------------------*\
   #SCRIM
 \*-----------------------------------*/
+.scrim {
+  @apply fixed z-[5] opacity-0 invisible;
+  inset: 0;
+  background-color: var(--scrim);
+  transition: var(--motion-duration-short-2) var(--motion-easing-linear);
+  transition-property: visibility, opacity;
+}
+
+.scrim.active{
+  @apply visible opacity-50 ;
+}
 
 /*-----------------------------------*\
   #MAIN
