@@ -1,6 +1,17 @@
 /**
  * @copyright matthewdsouza 2023
- * @author sadee <matthewdsouza.one@outlook.com>
+ * @author matthew <matthewdsouza.one@outlook.com>
  */
 
 "use strict";
+
+/**
+ * Add event on multiple elements
+ * @param {NodeList} $elements NodeList
+ * @param {String} eventType Event type eg. "click"
+ * @param {Function} callback Callback function
+ */
+
+export const addEventOnElements = function ($elements, eventType, callback) {
+    $elements.forEach($element => $element.addEventListener(eventType, callback));
+}

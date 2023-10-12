@@ -1,6 +1,6 @@
 /**
  * @copyright matthewdsouza 2023
- * @author sadee <matthewdsouza.one@outlook.com>
+ * @author matthew <matthewdsouza.one@outlook.com>
  */
 
 "use strict";
