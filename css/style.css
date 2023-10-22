@@ -452,6 +452,49 @@ button:disabled {
   @apply h-[1px] max-w-full bg-[var(--outline-variant)];
 }
 
+.section {
+  @apply relative;
+  margin-block-end: 24px;
+}
+
+.container {
+  padding-inline: 16px;
+}
+
+.section-title {
+  margin-block-end: 12px;
+}
+
+.media-grid {
+  @apply grid;
+  --column-count: 2;
+  --column-gap: 8px;
+  grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
+  gap: var(--column-gap);
+
+  /* for javascript */
+  /* overflow: hidden; */
+}
+
+.img-cover {
+  @apply h-full w-full object-cover;
+}
+
+.column {
+  @apply flex flex-col gap-[var(--column-gap)] self-start;
+}
+
+.overlay-btn {
+  @apply absolute bottom-[-2px] left-0 w-full grid place-items-center z-[1];
+
+  padding-block: 48px 24px;
+  background-image: linear-gradient(
+    0deg,
+    var(--background) 0%,
+    transparent 100%
+  );
+}
+
 /*-----------------------------------*\
   #COMPONENT
 \*-----------------------------------*/
@@ -481,6 +524,28 @@ button:disabled {
   100% {
     scale: 1;
   }
+}
+
+.icon-btn.small {
+  @apply w-[40px] h-[40px];
+  min-width: 40px;
+}
+
+.icon-btn.small .material-symbols-outlined {
+  font-size: 1.8rem;
+}
+
+.icon-btn.small > .ripple {
+  @apply w-[32px] h-[32px];
+}
+
+.icon-btn.active {
+  color: var(--primary);
+  --state-layer-bg: var(--primary);
+}
+
+.icon-btn.active .material-symbols-outlined {
+  font-variation-settings: "FILL" 1;
 }
 
 /**
@@ -704,6 +769,46 @@ button:disabled {
 /**
  * Card
  */
+.card {
+  @apply relative w-full h-max overflow-hidden;
+  border-radius: var(--radius-medium);
+  transition: box-shadow var(--motion-duration-short-2)
+    var(--motion-easing-linear);
+  --state-layer-bg: var(--on-surface);
+}
+
+.card:hover {
+  box-shadow: var(--elevation-1);
+}
+
+.card > .state-layer {
+  pointer-events: all;
+}
+
+.card .card-banner {
+  aspect-ratio: var(--width) / var(--height);
+}
+
+.card .card-content {
+  @apply absolute bottom-0 w-full pointer-events-none p-[5px] z-[2];
+  background-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    hsla(0, 0%, 0%, 0.75)
+  );
+}
+
+.card .icon-btn {
+  pointer-events: all;
+  color: var(--light-inverse-on-surface);
+  --state-layer-bg: var(--light-inverse-on-surface);
+  margin-inline-start: auto;
+}
+
+.card .icon-btn.active {
+  color: var(--light-inverse-primary);
+  --state-layer-bg: var(--light-inverse-primary);
+}
 
 /**
  * Menu
@@ -900,7 +1005,6 @@ button:disabled {
 /*-----------------------------------*\
   #CURATED PHOTOS & POPULAR VIDEO
 \*-----------------------------------*/
-
 
 /*-----------------------------------*\
   #COLLECTION
