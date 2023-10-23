@@ -21,6 +21,7 @@ $photoGrid.innerHTML = `<div class="skeleton"></div>`.repeat(18);
 
 client.photos.curated({ page: 1, per_page: 5 }, (data) => {
   $photoGrid.innerHTML = "";
+  const /** Object */ photoGrid = gridInit($photoGrid);
 
   data.photos.forEach((photo) => {
     const /** NodeElement */ $photoCard = photoCard(photo);
