@@ -4,3 +4,10 @@
  */
 
 "use strict";
+
+/**
+ * IMPORTS
+ */
+import { client } from "./api_configure.js";
+
+console.log(client.photos.curated());
