@@ -8,6 +8,7 @@
 // IMPORTS
 import { ripple } from "./utils/ripple.js";
 import { favorite } from "./favorite.js";
+import { hoverOnPlay } from "./utils/hoverOnPlay.js";
 
 /**
  * Create video card
@@ -48,7 +49,7 @@ export const videoCard = (video) => {
                 </button>
             </div>
 
-            <span class="card-badge">
+            <span class="card-badge" data-card-badge>
                 <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span>
             </span>
 
@@ -66,9 +67,9 @@ export const videoCard = (video) => {
   const /** NodeElement */ $favoriteBtn = $card.querySelector(
       "[data-favorite-btn]"
     );
-  favorite($favoriteBtn, "photos", id);
+  favorite($favoriteBtn, "videos", id);
 
-  //   hoverOnPlay($card);
+  hoverOnPlay($card);
 
   return $card;
 };
