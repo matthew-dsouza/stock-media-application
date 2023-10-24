@@ -448,6 +448,10 @@ button:disabled {
   @apply text-[var(--primary)] text-[2.6rem] font-[var(--weight-medium)] leading-[28px] tracking-[-0.5px];
 }
 
+.logo small {
+  font-size: 1.5rem;
+}
+
 .divider {
   @apply h-[1px] max-w-full bg-[var(--outline-variant)];
 }
@@ -692,6 +696,22 @@ button:disabled {
 .list-item .leading-icon {
   @apply text-[1.8rem];
   color: var(--on-surface-variant);
+}
+
+.list-item.two-line {
+  @apply justify-between h-[72px];
+  padding-inline-end: 12px;
+}
+
+.list-item.two-line .body-large {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.list-item.two-line > .state-layer {
+  pointer-events: all;
 }
 
 /**
@@ -1043,6 +1063,18 @@ button:disabled {
 /*-----------------------------------*\
   #COLLECTION
 \*-----------------------------------*/
+.grid-card .label {
+  color: var(--on-surface-variant);
+}
+
+.collection-grid .list-item {
+  border-block-end: 1px solid var(--outline-variant);
+}
+
+.collection .btn {
+  margin-block: 12px;
+  margin-inline: auto;
+}
 
 /*-----------------------------------*\
   #FOOTER

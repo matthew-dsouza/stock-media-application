@@ -1041,6 +1041,10 @@ button:disabled {
   color: var(--primary);
 }
 
+.logo small {
+  font-size: 1.5rem;
+}
+
 .divider {
   height: 1px;
   max-width: 100%;
@@ -1353,6 +1357,24 @@ button:disabled {
 .list-item .leading-icon {
   font-size: 1.8rem;
   color: var(--on-surface-variant);
+}
+
+.list-item.two-line {
+  height: 72px;
+  justify-content: space-between;
+  -webkit-padding-end: 12px;
+          padding-inline-end: 12px;
+}
+
+.list-item.two-line .body-large {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.list-item.two-line > .state-layer {
+  pointer-events: all;
 }
 
 /**
@@ -1778,6 +1800,20 @@ button:disabled {
 /*-----------------------------------*\
   #COLLECTION
 \*-----------------------------------*/
+
+.grid-card .label {
+  color: var(--on-surface-variant);
+}
+
+.collection-grid .list-item {
+  -webkit-border-after: 1px solid var(--outline-variant);
+          border-block-end: 1px solid var(--outline-variant);
+}
+
+.collection .btn {
+  margin-block: 12px;
+  margin-inline: auto;
+}
 
 /*-----------------------------------*\
   #FOOTER
