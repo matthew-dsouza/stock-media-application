@@ -568,6 +568,10 @@ video {
   }
 }
 
+.grid {
+  display: grid;
+}
+
 .list-item {
   display: list-item;
 }
@@ -1065,7 +1069,7 @@ button:disabled {
   grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
   gap: var(--column-gap);
   /* for javascript */
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 .img-cover {
@@ -1113,6 +1117,23 @@ button:disabled {
   100% {
     opacity: 1;
   }
+}
+
+.card-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: grid;
+  height: 24px;
+  width: 24px;
+  place-items: center;
+  background-color: var(--light-secondary-container);
+  color: var(--light-on-secondary-container);
+  border-radius: var(--radius-small);
+}
+
+.card-badge .material-symbols-outlined {
+  font-size: 1.8rem;
 }
 
 /*-----------------------------------*\
@@ -1507,6 +1528,10 @@ button:disabled {
   --state-layer-bg: var(--light-inverse-primary);
 }
 
+.card.video {
+  background-color: var(--surface-container-highest);
+}
+
 /**
  * Menu
  */
@@ -1744,6 +1769,11 @@ button:disabled {
 /*-----------------------------------*\
   #CURATED PHOTOS & POPULAR VIDEO
 \*-----------------------------------*/
+
+:where(.featured-photo, .popular-videos) .column {
+  -webkit-margin-after: -800px;
+          margin-block-end: -800px;
+}
 
 /*-----------------------------------*\
   #COLLECTION
