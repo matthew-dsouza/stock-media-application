@@ -18,7 +18,7 @@ import { favorite } from "./favorite.js";
  */
 export const photoCard = (photo) => {
   const /** STRING */ root = window.location.origin;
-  console.log(photo);
+  // console.log(photo);
 
   const {
     alt,
@@ -48,14 +48,14 @@ export const photoCard = (photo) => {
         <button class="icon-btn small ${
           favoriteObj.photos[id] ? "active" : ""
         }" aria-labelledby="Add to favorite" data-ripple data-favorite-btn>
-        <span class="material-symbols-outlined leading-icon" aria-hidden="true">favorite</span>
+          <span class="material-symbols-outlined leading-icon" aria-hidden="true">favorite</span>
 
-        <div class="state-layer"></div>
+          <div class="state-layer"></div>
         </button>
 
     </div>
 
-    <a href="${root}/pages/photos/photo_detail.js.html?id=${id}" class="state-layer"></a>
+    <a href="${root}/pages/photos/photo_detail.html?id=${id}" class="state-layer"></a>
   `;
 
   const /** NodeElement */ $cardBanner = $card.querySelector("img");
