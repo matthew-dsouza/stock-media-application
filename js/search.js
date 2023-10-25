@@ -12,93 +12,92 @@ import { ripple } from "./utils/ripple.js";
 import { addEventOnElements } from "./utils/event.js";
 import { segment } from "./segment_btn.js";
 import { updateUrl } from "./utils/updateUrl.js";
-
-
+import { urlDecode } from "./utils/urlDecode.js";
 
 /**
  * Search view toggle in small devices
  */
-const /** {NodeList} */ $searchTogglers = document.querySelectorAll("[data-search-toggler]");
-const /** {NodeElement} */ $searchView = document.querySelector("[data-search-view]");
+const /** {NodeList} */ $searchTogglers = document.querySelectorAll(
+    "[data-search-toggler]"
+  );
+const /** {NodeElement} */ $searchView =
+    document.querySelector("[data-search-view]");
 
-addEventOnElements($searchTogglers, "click", () => $searchView.classList.toggle("show"));
-
-
+addEventOnElements($searchTogglers, "click", () =>
+  $searchView.classList.toggle("show")
+);
 
 /**
  * Clear search field
  */
-const /** {NodeElement} */ $searchField = document.querySelector("[data-search-field]");
-const /** {NodeElement} */ $searchClearBtn = document.querySelector("[data-search-clear-btn]");
+const /** {NodeElement} */ $searchField = document.querySelector(
+    "[data-search-field]"
+  );
+const /** {NodeElement} */ $searchClearBtn = document.querySelector(
+    "[data-search-clear-btn]"
+  );
 
-$searchClearBtn.addEventListener("click", () => $searchField.value = "");
-
-
+$searchClearBtn.addEventListener("click", () => ($searchField.value = ""));
 
 /**
  * Search type
-*/
-const /** {NodeElement} */ $searchSegment = document.querySelector("[data-segment='search']");
-const /** {NodeElement} */ $activeSegmentBtn = $searchSegment.querySelector("[data-segment-btn].selected");
+ */
+const /** {NodeElement} */ $searchSegment = document.querySelector(
+    "[data-segment='search']"
+  );
+const /** {NodeElement} */ $activeSegmentBtn = $searchSegment.querySelector(
+    "[data-segment-btn].selected"
+  );
 window.searchType = $activeSegmentBtn.dataset.segmentValue;
 
-segment($searchSegment, segmentValue => {
-    window.searchType = segmentValue;
+segment($searchSegment, (segmentValue) => {
+  window.searchType = segmentValue;
 });
-
-
 
 // Update search history
 
-const updateSearchHistory = searchValue => {
+const updateSearchHistory = (searchValue) => {
+  /**
+   * If the searched value is already present in the search list
+   * then remove it and add the same search value at the beginning
+   * of the search list.
+   * To ensure most recent search is always at top of history.
+   */
 
-    /**
-     * If the searched value is already present in the search list
-     * then remove it and add the same search value at the beginning 
-     * of the search list.
-     * To ensure most recent search is always at top of history.
-     */
+  if (searchHistory.items.includes(searchValue)) {
+    searchHistory.items.splice(searchHistory.items.indexOf(searchValue), 1);
+  }
 
-    if (searchHistory.items.includes(searchValue)) {
-        searchHistory.items.splice(searchHistory.items.indexOf(searchValue), 1);
-    }
+  searchHistory.items.unshift(searchValue);
 
-    searchHistory.items.unshift(searchValue);
-
-    window.localStorage.setItem("search_history", JSON.stringify(searchHistory));
-
-}
-
-
+  window.localStorage.setItem("search_history", JSON.stringify(searchHistory));
+};
 
 /**
  * Submit search
  */
-const /** {NodeElement} */ $searchBtn = document.querySelector("[data-search-btn]");
+const /** {NodeElement} */ $searchBtn =
+    document.querySelector("[data-search-btn]");
 
 $searchBtn.addEventListener("click", function () {
-    const /** {Boolean} */ searchValue = $searchField.value.trim();
-    // console.log(searchValue);
-    if (searchValue) {
-        updateSearchHistory(searchValue);
-        window.filterObj.query = searchValue;
-        updateUrl(window.filterObj, window.searchType);
-    }
+  const /** {Boolean} */ searchValue = $searchField.value.trim();
+  // console.log(searchValue);
+  if (searchValue) {
+    updateSearchHistory(searchValue);
+    window.filterObj.query = searchValue;
+    updateUrl(window.filterObj, window.searchType);
+  }
 });
-
-
 
 /**
  * Submit search on pressing "Enter" key
  */
-$searchField.addEventListener("keydown", e => {
-    if (e.key === "Enter" && $searchField.value.trim()) $searchBtn.click();
+$searchField.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && $searchField.value.trim()) $searchBtn.click();
 });
 
-
-
 /**
-* Search history
+ * Search history
  */
 
 // Initial search history
@@ -106,13 +105,11 @@ $searchField.addEventListener("keydown", e => {
 let /** {Object} */ searchHistory = { items: [] };
 
 if (window.localStorage.getItem("search_history")) {
-    searchHistory = JSON.parse(window.localStorage.getItem("search_history"));
-    // console.log(searchHistory);
+  searchHistory = JSON.parse(window.localStorage.getItem("search_history"));
+  // console.log(searchHistory);
 } else {
-    window.localStorage.setItem("search_history", JSON.stringify(searchHistory));
+  window.localStorage.setItem("search_history", JSON.stringify(searchHistory));
 }
-
-
 
 /**
  * Render search history items in search list
@@ -120,11 +117,11 @@ if (window.localStorage.getItem("search_history")) {
 const $searchList = document.querySelector("[data-search-list]");
 const historyLen = searchHistory.items.length;
 
-for (let i = 0; i < historyLen & i <= 5; i++) {
-    const $listItem = document.createElement("button");
-    $listItem.classList.add("list-item");
+for (let i = 0; (i < historyLen) & (i <= 5); i++) {
+  const $listItem = document.createElement("button");
+  $listItem.classList.add("list-item");
 
-    $listItem.innerHTML = `
+  $listItem.innerHTML = `
         <span class="material-symbols-outlined leading-icon" aria-hidden="true">history</span>
 
         <span class="body-large text">${searchHistory.items[i]}</span>
@@ -132,13 +129,17 @@ for (let i = 0; i < historyLen & i <= 5; i++) {
         <div class="state-layer"></div>
     `;
 
-    ripple($listItem);
+  ripple($listItem);
 
-    $listItem.addEventListener("click", function () {
-        $searchField.value = this.children[1].textContent;
-        $searchBtn.click();
-    });
+  $listItem.addEventListener("click", function () {
+    $searchField.value = this.children[1].textContent;
+    $searchBtn.click();
+  });
 
-    $searchList.appendChild($listItem);
-
+  $searchList.appendChild($listItem);
 }
+
+// Show searched value in search field after reload
+const search = urlDecode(window.location.search.slice(1));
+
+if (search.query) $searchField.value = search.query;
