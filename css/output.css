@@ -880,7 +880,7 @@ body {
   color: var(--on-background);
   transition: opacity var(--motion-duration-medium-2)
     var(--motion-easing-linear);
-  /* opacity: 0; */
+  opacity: 0;
 }
 
 button:disabled {
@@ -2156,6 +2156,14 @@ button:disabled {
 /*-----------------------------------*\
   #FAVORITE PAGE
 \*-----------------------------------*/
+
+.favorite-page .btn-group {
+  margin-block: 16px;
+}
+
+.favorite-page .btn-group .btn-segment {
+  flex: 1 1 25%;
+}
 
 /*-----------------------------------*\
   #MEDIA QUERIES
