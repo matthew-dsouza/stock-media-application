@@ -292,7 +292,7 @@ body {
   @apply bg-[var(--background)] text-[var(--on-background)] text-[1.6rem] flex flex-col min-h-screen;
   transition: opacity var(--motion-duration-medium-2)
     var(--motion-easing-linear);
-  opacity: 0;
+  /* opacity: 0; */
 }
 
 button:disabled {
@@ -658,6 +658,34 @@ button:disabled {
 /**
  * Split btn
  */
+.split-btn {
+  @apply flex items-center h-[40px] overflow-hidden;
+  background-color: var(--primary);
+  color: var(--on-primary);
+  border-radius: var(--radius-full);
+}
+
+.split-btn .label {
+  --state-layer-bg: var(--on-primary);
+  padding-inline: 16px;
+  height: inherit;
+  display: grid;
+  place-items: center;
+  border-inline-end: 1px solid var(--outline-variant);
+}
+
+.split-btn .trailing-icon {
+  --state-layer-bg: var(--on-primary);
+  color: inherit;
+  height: inherit;
+  width: 40px;
+  display: grid;
+  place-items: center;
+}
+
+.split-btn .material-symbols-outlined {
+  font-size: 1.8rem;
+}
 
 /**
  * Search view
@@ -1260,13 +1288,63 @@ button:disabled {
   @apply relative;
 }
 
-.color-field{
-  @apply absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer
+.color-field {
+  @apply absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer;
 }
 
 /*-----------------------------------*\
   #PHOTO DETAIL PAGE
 \*-----------------------------------*/
+.detail :is(.main, .footer) {
+  margin-inline-start: 0;
+}
+
+.detail .top-app-bar .icon-btn:first-child {
+  display: grid;
+}
+
+.detail .top-app-bar .logo {
+  display: block;
+}
+
+.detail .top-app-bar {
+  @apply left-0 w-full gap-[4px];
+}
+
+.detail .menu-wrapper {
+  margin-inline-start: auto;
+}
+
+.detail .menu-wrapper .menu {
+  transform-origin: top right;
+  left: auto;
+  right: 0;
+}
+
+.detail-wrapper {
+  @apply h-[588px] grid;
+  grid-template-rows: 1fr max-content;
+  place-items: center;
+}
+
+.detail-banner {
+  @apply max-w-full max-h-full overflow-hidden;
+  margin-inline: auto;
+  border-radius: var(--radius-large);
+  margin-block-end: 8px;
+}
+
+.detail-wrapper .title-small {
+  text-align: center;
+}
+
+.detail-wrapper .color-primary {
+  display: inline-block;
+}
+
+.detail .title-large {
+  margin-block: 32px 16px;
+}
 
 /*-----------------------------------*\
   #FAVORITE PAGE

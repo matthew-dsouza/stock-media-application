@@ -84,9 +84,9 @@ if (!window.localStorage.getItem("favorite")) {
 // Page transition
 //
 window.addEventListener("loadstart", function () {
-  this.document.body.style.opacity = "0";
+  document.body.style.opacity = "0";
 });
 
 window.addEventListener("DOMContentLoaded", function () {
-  this.document.body.style.opacity = "1";
+  document.body.style.opacity = "1";
 });

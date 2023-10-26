@@ -22,6 +22,7 @@ $filterBar.style.display = window.location.search ? "flex" : "none";
 // Init filter
 //
 const $filterWrappers = document.querySelectorAll("[data-filter]");
+
 $filterWrappers.forEach(($filterWrapper) => {
   filter($filterWrapper, window.filterObj, (newObj) => {
     // console.log(newObj);

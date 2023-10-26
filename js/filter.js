@@ -30,7 +30,7 @@ export const filter = ($filterWrapper, filterObj, callback) => {
 
   $filterClearBtn.addEventListener("click", () => {
     $filterChip.classList.remove("selected");
-    filterValue.innerText = $filterValue.dataset.filterValue;
+    $filterValue.innerText = $filterValue.dataset.filterValue;
 
     delete newObj[filterKey];
     callback(newObj);
