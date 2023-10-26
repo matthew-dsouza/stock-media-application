@@ -173,7 +173,7 @@ More collections
 
 Pixstock
 
-Pixstock is a stock photo app developed by matthewdsouza and all Photos and Videos provided by Pexels.
+Pixstock is a stock media app developed by matthewdsouza and all Photos and Videos provided by Pexels.
 
 Follow us on
 
