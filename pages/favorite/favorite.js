@@ -11,7 +11,7 @@ import { segment } from "../../js/segment_btn.js";
 import { photoCard } from "../../js/photo_card.js";
 import { videoCard } from "../../js/video_card.js";
 
-// Favorite segment button
+// Favorites segment button
 const $favoriteSegment = document.querySelector("[data-segment='favorite']");
 let favType = "photos";
 
